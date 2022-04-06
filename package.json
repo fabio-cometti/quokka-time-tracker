@@ -4,20 +4,28 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build-prod": "node --max_old_space_size=6144 ./node_modules/@angular/cli/bin/ng build --stats-json",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint",
+    "compodoc": "npx compodoc --tsconfig tsconfig.json --disableCoverage --customFavicon src/favicon.ico --customLogo src/assets/logo_quokka.png --serve",
+    "bundle-report": "webpack-bundle-analyzer dist/quokka-time-tracker/stats.json"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.3.2",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
     "@angular/forms": "~13.3.0",
+    "@angular/material": "^13.3.2",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@angular/service-worker": "~13.3.0",
+    "date-fns": "^2.28.0",
+    "guid-typescript": "^1.0.9",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

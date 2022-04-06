@@ -1,0 +1,46 @@
+div.report-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+
+  .accordion {
+    margin-top: 1em;
+  }
+
+  button.fixed-position {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    z-index: 20000;
+  }
+
+  mat-icon {
+    cursor: pointer;
+
+    &.inline-icon {
+      margin-right: 1em;
+    }
+  }
+
+  .detail {
+    margin-left: 2em;
+
+    &:hover {
+      background-color: #FF9800;
+      cursor: default;
+    }
+
+    mat-icon {
+      position: relative;
+      top: 0.1em;
+    }
+
+    span {
+      font-size: 0.83em;
+    }
+  }
+}
+
+div.description-block {
+  margin-left: 1em;
+}

@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Segoe UI',
+  $body-1: mat.define-typography-level(1em, 1em, lighter, $letter-spacing: -0.05em)
+);
+
+@include mat.core($custom-typography);
+
+$quokka-time-tracker-primary: mat.define-palette(mat.$orange-palette);
+$quokka-time-tracker-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
+$quokka-time-tracker-warn: mat.define-palette(mat.$red-palette);
+
+$quokka-time-tracker-theme: mat.define-dark-theme((
+  color: (
+    primary: $quokka-time-tracker-primary,
+    accent: $quokka-time-tracker-accent,
+    warn: $quokka-time-tracker-warn,
+  )
+));
+
+@include mat.all-component-themes($quokka-time-tracker-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Segoe UI', "Helvetica Neue", sans-serif; }
+
+$color-config: mat.get-color-config($quokka-time-tracker-theme);
+$primary-palette: map.get($color-config, 'primary');
+
+.primary-color {
+  color: mat.get-color-from-palette($primary-palette, 500);
+}
+
+div.mat-tab-label:not(.mat-tab-label-active) {
+  div.mat-tab-label-content {
+    font-weight: lighter !important;
+  }
+}

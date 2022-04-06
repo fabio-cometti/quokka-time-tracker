@@ -1,0 +1,30 @@
+div.main-content {
+  background-image: url(/assets/logo_quokka.png);
+  background-position: center 220px;
+  background-repeat: no-repeat;
+  width: calc(100% - 2em);
+  height: calc(100vh - 2em);
+  position: relative;
+  padding: 1em;
+  margin: auto;
+}
+
+.record-icon {
+  color: red;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+}
+
+img.title-logo {
+  width: 50px;
+  position: relative;
+  top: 15px;
+}
+
+button.top-fixed-position{
+  position: fixed;
+  bottom: 2em;
+  left: 1em;
+  z-index: 20000;
+}

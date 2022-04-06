@@ -1,0 +1,33 @@
+<div *ngIf="((tracker.activitiesByDay$ | async) || []) as activities" class="report-container">
+  <mat-accordion class="accordion">
+    <h1 class="timer" *ngIf="activities.length === 0">
+      No activities recorded
+    </h1>
+    <mat-expansion-panel *ngFor="let day of activities; trackBy: trackByDate" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon title="Delete" class="inline-icon" (click)="deleteDate(day.date)" [inline]="true">delete</mat-icon>{{day.date |
+          date:'dd-MM-yyyy':'it'}}
+        </mat-panel-title>
+        <mat-panel-description>
+          Detail
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="description-block" *ngFor="let activity of day.activities | keyvalue">
+        <h4><mat-icon title="Delete" class="inline-icon" (click)="deleteDescription(activity.key, day.date)" [inline]="true">delete</mat-icon>
+          {{activity.key}}</h4>
+        <h5>About <b>{{ activity.value | formatSum }}</b></h5>
+        <div class="detail" *ngFor="let detail of activity.value">
+          <mat-icon title="Delete" class="inline-icon" (click)="delete(detail)" [inline]="true">delete</mat-icon>
+          <span>
+            From <b>{{detail.interval.from | date:'HH:mm':'it'}}</b> to <b>{{detail.interval.to | date:'HH:mm':'it'}}</b> - About <b>{{ detail.interval.totalTime | formatDuration }}</b>
+          </span>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <button title="Delete all" class="fixed-position" *ngIf="activities.length > 0"
+    mat-fab color="primary" (click)="clearAll()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

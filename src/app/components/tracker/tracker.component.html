@@ -1,0 +1,24 @@
+<div class="tracker-container">
+  <form [formGroup]="descriptionForm">
+    <mat-form-field class="activity-description-form">
+      <input placeholder="Activity description" [matAutocomplete]="auto" type="text" matInput
+        formControlName="description" required>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let desc of filteredDescriptions$ | async" [value]="desc">{{ desc | uppercase}}</mat-option>
+    </mat-autocomplete>
+  </form>
+
+  <h1 class="timer" *ngIf="(tracker.isRecording$ | async)">
+    {{tracker.recordingTime$ | async | formatInterval}}
+  </h1>
+
+  <button *ngIf="descriptionForm.valid && !(tracker.isRecording$ | async)" class="control-button"
+    (click)="tracker.start()" mat-fab color="primary" aria-label="Start recording">
+    <mat-icon>play_arrow</mat-icon>
+  </button>
+  <button *ngIf="(tracker.isRecording$ | async)" class="control-button" (click)="tracker.pause()" mat-fab
+    color="primary" aria-label="Stop recording">
+    <mat-icon>pause</mat-icon>
+  </button>
+</div>
