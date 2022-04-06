@@ -1,6 +1,6 @@
 {
-  "name": "quokka-time-tracker",
-  "short_name": "quokka-time-tracker",
+  "name": "Quokka Time Tracker",
+  "short_name": "Quokka Time Tracker",
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
   "display": "standalone",
