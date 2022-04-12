@@ -33,7 +33,9 @@ export class TrackerComponent implements OnInit {
     });
 
     //Bind the description field to the tracker service
-    const valueChanges$ = descriptionField!.valueChanges.pipe(map(val => '' + val));
+    const valueChanges$ = descriptionField!.valueChanges.pipe(
+      startWith('' + descriptionField?.value),
+      map(val => '' + val));
     this.tracker.setActivityDescriptionsStream(valueChanges$);
 
     //Fill the description autocomplete with al the acitivity desciption from the tracker service
