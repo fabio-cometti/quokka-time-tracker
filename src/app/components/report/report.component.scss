@@ -19,6 +19,10 @@ div.report-container {
 
     &.inline-icon {
       margin-right: 1em;
+
+      &:hover {
+        color:#FF9800;
+      }
     }
   }
 
@@ -26,7 +30,7 @@ div.report-container {
     margin-left: 2em;
 
     &:hover {
-      background-color: #FF9800;
+      background-color: lighten($color: #FF9800, $amount: 20);
       cursor: default;
     }
 
